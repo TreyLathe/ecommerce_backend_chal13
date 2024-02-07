@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    include: [Category, Tag]
+    include: [{model: Category, through: Tag}]
   })
     .then((products) => {
       res.json(products)
@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      include: [Category, Tag]
+      include: [{model: Category, through: Tag}]
     })
       .then((product) => {
         res.json(product)

@@ -8,6 +8,12 @@ router.get('/', (req, res) => {
   Category.findAll({
     include: [Product]
   })
+  .then((category) => {
+    res.json(category)
+  })
+  .catch((err) => {
+    res.json(err)
+  })
 });
 
 router.get('/:id', (req, res) => {
@@ -18,6 +24,12 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     },
     include: [Product]
+  })
+  .then((category) => {
+    res.json(category)
+  })
+  .catch((err) => {
+    res.json(err)
   })
 });
 
